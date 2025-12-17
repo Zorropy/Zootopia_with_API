@@ -1,18 +1,4 @@
-import json
-
-def load_data(file_path):
-    """
-    Lädt Daten aus einer JSON-Datei.
-
-    Params:
-        file_path (str): Der Pfad zur JSON-Datei.
-
-    Returns:
-        dict or list: Der Inhalt der JSON-Datei.
-    """
-    with open(file_path, "r") as handle:
-        return json.load(handle)
-
+from api_service import load_data
 
 def serialize_animal(animal):
     """
@@ -27,6 +13,7 @@ def serialize_animal(animal):
     Returns:
         str: Der fertig formatierte HTML-String für den Tier-Eintrag.
     """
+
 
     name = animal.get("name")
     diet = animal.get("characteristics", {}).get("diet")
@@ -54,7 +41,11 @@ def main():
     aller Tiere und ersetzt einen Platzhalter in der Vorlage, um die finale
     'animals.html'-Datei zu erzeugen.
     """
-    animals_data = load_data('animals_data.json')
+    user_input = input("Pleace enter a animal:")
+
+
+
+    animals_data = load_data(user_input)
     html_data = ''
 
     with open('animals_template.html', "r") as handle:
